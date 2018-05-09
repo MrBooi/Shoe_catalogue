@@ -1,0 +1,101 @@
+body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+h1{
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 1px solid blue;
+}
+
+.brand{
+box-sizing: border-box;
+padding: 1rem;
+
+
+}
+h4{
+  margin: 1rem;
+}
+.addStock{
+  margin-top: 2em;
+  box-sizing: border-box;
+
+}
+
+span{
+  display: block;
+}
+
+.shoe ,.shoeSize ,.shoeColor{
+ width: 100px;
+ height: 30px;  
+ width: 100%;
+ height: 40px;
+ font: 1rem bold;
+ margin-right: 2rem;
+ margin-bottom: 1rem;
+}
+
+.searchBtn{
+  width: 40%;
+  background-color: blue;
+  color: white;
+  padding: 12px 12px; 
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.btnStock{
+  width: 20%;
+  background-color: blue;
+  color: white;
+  padding: 12px 12px; 
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+
+}
+
+.displayArea{
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+ margin-top: 2rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+ 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+input[type="text"] {
+  width: 90%;
+  padding: 12px 8px;
+  border: none;
+  font-size: 14px;
+  color: blue;
+  border: 1px solid #ccc;
+  display:block;
+}
+
+.displayButton{
+  margin-left: 1rem;
+}
+
+
+
+
+
+
+
