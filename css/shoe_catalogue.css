@@ -51,7 +51,7 @@ span{
   display: block;
 }
 
-.shoe ,.shoeSize ,.shoeColor{
+.shoe ,.shoeSizes ,.shoeColors{
  width: 100px;
  height: 30px;  
  width: 100%;
