@@ -14,6 +14,24 @@ h1{
   border-bottom: 1px solid blue;
 }
 
+.nav{
+ background-color: blue;
+}
+
+.nav div{
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 5px;
+}
+.nav div a{
+  margin-left: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
 .brand{
 box-sizing: border-box;
 padding: 1rem;
