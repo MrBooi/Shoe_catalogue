@@ -6,14 +6,16 @@ var addStockBtn = document.querySelector('.btnStock');
 var shoeSelect = document.querySelector('.shoe');
 var colorSelect = document.querySelector('.shoeColors');
 var ShoeSizeSelect = document.querySelector('.shoeSizes');
+var searchShoesBtn = document.querySelector('.searchBtn');
 
 
-function ShoeCatalouge(storedItems, trolley) {
+function ShoeCatalouge(storedItems) {
   var shoeBrand = '';
   var shoeColor = '';
   var shoeQty = 0;
   var shoeSize = 0;
   var storeShoeStock = storedItems || [];
+  var trolley = {};
 
   function setShoeBrand(value) {
     if (value != undefined) {
@@ -48,59 +50,73 @@ function ShoeCatalouge(storedItems, trolley) {
   }
    
   function filterShoes(brandName,brandColor,brandSize){
-    var getFilteredItems = []
-
-
-   
-    
+    var getFilteredItems = [];
    if(brandName !==''&& brandColor!==''&& brandColor!==''){
-    getFilteredItems= _.filter(storeShoeStock,{"shoeBrand":brandName,"colour":brandColor,"sizeShoe":brandSize});
-    // storeShoeStock.filter(current => current.shoeBrand===brandName)
-      return getFilteredItems
+    getFilteredItems= _.filter(storeShoeStock,
+    {shoeBrand:brandName,colour:brandColor,sizeShoe:brandSize});
+     
+    if(getFilteredItems !=={}){
+   
+      trolley=  getFilteredItems;
+   console.log(Object.assign(trolley));
+              
+
+    // console.log(trolley);
     }
-    // else   if(brandName !==''&& brandColor!==''){
-    //   getFilteredItems= _.filter(storeShoeStock,{shoeBrand:brandName,colour:brandColor}) ;           
-    //   // storeShoeStock.filter(current => current.shoeBrand===brandName)
-    //     return getFilteredItems;
-    //   }
-
-    // if(brandName !==''){
-    //   getFilteredItems= _.filter(storeShoeStock,{shoeBrand:brandName});
-    //   return getFilteredItems;
-    // }
-
-
-
-    
+    return getFilteredItems;
+    }
   }
+    
+  function addCart(){
+
+
+  }
+      
+    
+      
+  
 
 
 
+  
 
   function addNewStock(brand, Color, Qty, shoesize, Price) {
-       
-     storeShoeStock.push({
+   var alreadyExist =false;
+   storeShoeStock.map(current =>{
+  if(current.shoeBrand ===brand&&current.colour===Color&& current.sizeShoe==shoesize){
+       console.log("already exist");
+       let  getQty = parseFloat(current.qty)
+      let  QtyNumber =parseFloat(Qty)
+       current.qty  =getQty +QtyNumber ;
+       alreadyExist =true;
+      }
+   });
+      if(!alreadyExist){
+         storeShoeStock.push({
       'shoeBrand':brand,
       'colour':Color,
       'qty':Qty,
       'sizeShoe':shoesize,
       'price': 1500
     })
-   
-
+      }
       return storeShoeStock;
     }
+ 
+   
 
-  return {
+
+  
+  
+   return {
     stockadd: addNewStock,
     storeMap: stockMap,
-    filterBy: filterShoes
+    filterBy: filterShoes  
   }
 }
 
 
 var StoredItems = localStorage.getItem('shoppingBasket') ? JSON.parse(localStorage.getItem('shoppingBasket')) : [];
-
 var shoe_Catalogue = ShoeCatalouge(StoredItems);
 
 function addStock() {
@@ -115,25 +131,28 @@ function addStock() {
   localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.storeMap()));
 }
 
-// function selectShoe(){
-
-//    console.log(shoe_Catalogue.filterBy(shoeSelect.value));
-// }
-
-//  function colorSelect(){
-//   shoe_Catalogue.filterBy(colorSelect.value);
-//  } 
-//  function ShoeSizeSelect(){
-//   shoe_Catalogue.filterBy(ShoeSizeSelect.value);
-//  }
-
 
 addStockBtn.addEventListener('click', addStock);
 
-ShoeSizeSelect.addEventListener('change',function(){
-
-console.log(shoe_Catalogue.filterBy(shoeSelect.value))
+shoeSelect.addEventListener('change',function(){
+shoeSelect.value;
 });
+
+colorSelect.addEventListener('change',function(){
+  colorSelect.value;
+  });
+
+  ShoeSizeSelect.addEventListener('change',function(){
+    ShoeSizeSelect.value;
+  });
+
+// Search Items 
+searchShoesBtn.addEventListener('click',function(){
+  if(shoeSelect.value !==''&&colorSelect.value !==''&& ShoeSizeSelect.value!==''){
+    console.log(shoe_Catalogue.filterBy(shoeSelect.value,colorSelect.value,ShoeSizeSelect.value));
+  }
+});
+
 
 
 
