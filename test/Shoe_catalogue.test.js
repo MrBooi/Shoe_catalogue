@@ -72,7 +72,7 @@ it('filterBy Size', function() {
 
 
 describe('Add to Basket', function() {
-    it('', function() {
+    it('shound search shoes using id then return an object', function() {
       var shoes = ShoeCatalogue();
       shoes.stockadd("New Balance","Blue","7","4", 1500);
       shoes.cart(1);
@@ -82,7 +82,7 @@ describe('Add to Basket', function() {
     );
 });
 
-it('', function() {
+it('shound search shoes using id then return an object', function() {
     var shoes = ShoeCatalogue();
     shoes.stockadd("New Balance","Blue","7","4", 1500);
     shoes.stockadd("New Balance","White","4","4", 1500);
