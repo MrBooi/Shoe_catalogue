@@ -15,7 +15,7 @@ function ShoeCatalouge(storedItems) {
   var shoeQty = 0;
   var shoeSize = 0;
   var storeShoeStock = storedItems || [];
-  var trolley = {};
+  var trolley = []
 
   function setShoeBrand(value) {
     if (value != undefined) {
@@ -49,14 +49,8 @@ function ShoeCatalouge(storedItems) {
     return storeShoeStock;
   }
    
-  function filterShoes(brandName,brandColor,brandSize){
-    var getFilteredItems = [];
-  //  if(brandName !==''&& brandColor!==''&& brandColor!==''){
-    getFilteredItems= _.filter(storeShoeStock,
-    {shoeBrand:brandName,colour:brandColor,sizeShoe:brandSize});
-     
-    return getFilteredItems;
-    // }
+  function filterShoes(SearchItems){
+    return _.filter(storeShoeStock,SearchItems);
   }
    
 
@@ -142,25 +136,26 @@ function addStock() {
 
 addStockBtn.addEventListener('click', addStock);
 
-shoeSelect.addEventListener('change',function(){
-shoeSelect.value;
-});
-
-colorSelect.addEventListener('change',function(){
-  colorSelect.value;
-  });
-
-  ShoeSizeSelect.addEventListener('change',function(){
-    ShoeSizeSelect.value;
-  });
-
 // Search Items 
 searchShoesBtn.addEventListener('click',function(){
-   if(shoeSelect.value !==''&&colorSelect.value !==''&& ShoeSizeSelect.value!==''){
-    console.log(shoe_Catalogue.filterBy(shoeSelect.value,colorSelect.value,ShoeSizeSelect.value));
+   
+  SearchItems={
+    shoeBrand:shoeSelect.value,
+    colour   : colorSelect.value,
+    sizeShoe : ShoeSizeSelect.value
    }
-      // console.log(shoe_Catalogue.cart(shoe_Catalogue.storeMap));
-  
+   if(colorSelect.value==""){
+    delete selectedItems.colour;
+  }
+
+  if(ShoeSizeSelect.value==""){
+    delete selectedItems.sizeShoe;
+  }
+  if(shoeSelect.value==""){
+    delete selectedItems.shoeBrand;
+  }
+    console.log(shoe_Catalogue.filterBy(SearchItems));
+    console.log(SearchItems);
 });
 
 
