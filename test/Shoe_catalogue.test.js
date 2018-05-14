@@ -6,7 +6,7 @@ describe('The Add Shoes into stock', function() {
    
       assert.deepEqual(shoes.storeMap(),
       [
-      {shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500}]
+      {shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500,id:1}]
     );
 });
 
@@ -17,7 +17,7 @@ it('should display increased shoe QTY if shoe already exist  ', function() {
       shoes.stockadd(
     "New Balance","Blue","4","4", 1500);
     assert.deepEqual(shoes.storeMap(),
-    [{shoeBrand: 'New Balance', colour: "Blue", qty: 11, sizeShoe: "4", price: 1500}]
+    [{shoeBrand: 'New Balance', colour: "Blue", qty: 11, sizeShoe: "4", price: 1500,id:1}]
   );
 });
 });
@@ -31,7 +31,7 @@ describe('Filterby selected brandName,BrandColor,BrandSize', function() {
         shoeBrand:"New Balance"
       });
       assert.deepEqual(shoes.getFiltered(),
-      [{shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500}]);
+      [{shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500, id:1}]);
 });
 
 it('filterBy Color', function() {
@@ -41,8 +41,8 @@ it('filterBy Color', function() {
     shoes.stockadd("Nike","White","4","4", 1500);
     shoes.filterBy({colour:"Blue"});
     assert.deepEqual(shoes.getFiltered(),
-    [{shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500},
-      {shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500}]    
+    [{shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500, id:1},
+      {shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500,id:2}]    
   );
 });
 
@@ -53,11 +53,10 @@ it('filterBy Size', function() {
     shoes.stockadd("Nike","White","4","4", 1500);
     shoes.filterBy({sizeShoe:"4"});
     assert.deepEqual(shoes.getFiltered(),
-    [{shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500},
-      {shoeBrand: 'Nike', colour: "White", qty: "4", sizeShoe: "4", price: 1500}]    
+    [{shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500,id:2},
+      {shoeBrand: 'Nike', colour: "White", qty: "4", sizeShoe: "4", price: 1500,id:3}]    
   );
 });
-
   it('filterBy BrandName,BrandColor and size', function() {
     var shoes = ShoeCatalouge();
     shoes.stockadd("New Balance","Blue","7","7", 1500);
@@ -65,13 +64,59 @@ it('filterBy Size', function() {
     shoes.stockadd("Nike","White","4","4", 1500);
     shoes.filterBy({shoeBrand:"Nike",colour:"Blue",sizeShoe:"4"});
     assert.deepEqual(shoes.getFiltered(),
-    [{shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500}
+    [{shoeBrand: 'Nike', colour: "Blue", qty: "5", sizeShoe: "4", price: 1500,id:2}
      ]    
   );
 });
-
-
-
-
-
 });
+
+
+describe('Add to Basket', function() {
+    it('', function() {
+      var shoes = ShoeCatalouge();
+      shoes.stockadd(
+        "New Balance","Blue","7","4", 1500);
+   
+      assert.deepEqual(shoes.storeMap(),
+      [
+      {shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500,id:1}]
+    );
+});
+
+it('', function() {
+    var shoes = ShoeCatalouge();
+    shoes.stockadd(
+      "New Balance","Blue","7","4", 1500);
+      shoes.stockadd(
+    "New Balance","Blue","4","4", 1500);
+    assert.deepEqual(shoes.storeMap(),
+    [{shoeBrand: 'New Balance', colour: "Blue", qty: 11, sizeShoe: "4", price: 1500,id:1}]
+  );
+});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
