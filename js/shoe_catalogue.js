@@ -1,4 +1,4 @@
-function ShoeCatalouge(storedItems) {
+function ShoeCatalogue(storedItems) {
   var shoeBrand = '';
   var shoeColor = '';
   var shoeQty = 0;
@@ -21,28 +21,13 @@ function ShoeCatalouge(storedItems) {
   }
 
 
-  function addCart() {
-    var addedToBasket =false
-    basket.map(items => {
-      if (items.shoeBrand == items.shoeBrand&&
-        items.shoeBrand==items.shoeBrand&&
-        items.shoeBrand==items.shoeBrand) {
-          addedToBasket = true;
-      }
-    
-       if(!addedToBasket){
-        basket.push({
-          'shoeBrand': brand,
-          'colour': Color,
-          'qty': 1,
-          'sizeShoe': shoesize,
-          'price': 1500
-        })
-          
-       } 
+  function addCart(id) {
+ var found=  storeShoeStock.find(items => (items.id==id));
+     basket.push(found);
+  }
 
-
-    });
+  function getBasket(){
+    return basket;
   }
 
 
@@ -85,7 +70,8 @@ function ShoeCatalouge(storedItems) {
     storeMap: stockMap,
     filterBy: filterShoes,
     getFiltered:getSearchedItems,
-    cart: addCart
+    cart: addCart,
+    addedCartITems: getBasket
   }
 }
 

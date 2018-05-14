@@ -7,8 +7,40 @@
      <link rel="stylesheet" href="css/simple-grid.css">
      <link rel="stylesheet" href="css/shoe_catalogue.css">
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+
+    <script type="text/x-template" class="ShoeTemplate">
+      {{#each shoeList}}
+      <tr>
+          <td>Brand:</td>
+          <td>{{shoeBrand}}</td>
+        </tr>
+        <br>
+        <tr>
+           <td>Color:</td>
+           <td>{{colour}}</td>
+         </tr>
+         <tr>
+             <br>
+         <td>Size:</td>
+          <td>{{sizeShoe}}</td>
+           </tr>
+           <br>
+           <td>In_Stock:</td>
+          <td>{{qty}}</td>
+           </tr>
+           <br>
+           
+           <td>Price:</td>
+          <td>R{{price}}</td>
+           </tr>
+           <br>
+ 
+           <button onclick="{{id}}">Buy</button>
+           <button onclick="{{id}}">Cancel</button>
+      {{/each}}
+          </script>
   </head>
   <body>
     <header>
@@ -62,28 +94,7 @@
        
       <div class="col-6">
         <div class="displayArea">
-       <tr>
-         <td>Brand:</td>
-         <td>Le coq</td>
-       </tr>
-       <br>
-       <tr>
-          <td>Color:</td>
-          <td>Black</td>
-        </tr>
-        <tr>
-            <br>
-        <td>Size:</td>
-         <td>7</td>
-          </tr>
-          <br>
-          <td>Price:</td>
-         <td>R1300.00</td>
-          </tr>
-          <br>
-
-          <button>Buy</button>
-          <button>Cancel</button>
+   
       </div>
     </div>
     </div>
