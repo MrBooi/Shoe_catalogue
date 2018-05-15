@@ -30,9 +30,9 @@ function addStock() {
   localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.storeMap()));
 }
 
-function searchByID(idValue){
-  // shoe_Catalogue.cart(idValue.id); 
+function searchByID(idValue){  
   localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.cart(idValue.id)));
+   window.location.reload();
 
 }
 
