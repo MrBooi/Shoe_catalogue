@@ -37,8 +37,8 @@
            </tr>
            <br>
  
-           <button onclick="{{id}}">Buy</button>
-           <button onclick="{{id}}">Cancel</button>
+           <button id="{{id}}" onclick="searchByID(this)">Buy</button>
+           <button  id="{{id}}" onclick="removeByID(this)">Cancel</button>
            <hr>
       {{/each}}
           </script>

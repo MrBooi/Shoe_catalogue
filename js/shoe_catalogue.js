@@ -13,6 +13,7 @@ function ShoeCatalogue(storedItems) {
 
   function filterShoes(Params) {
     trolley = _.filter(storeShoeStock, Params);
+    
     return _.filter(storeShoeStock, Params);
   }
 
@@ -22,21 +23,43 @@ function ShoeCatalogue(storedItems) {
 
 
   function addCart(id) {
- var found=  storeShoeStock.find(items => (items.id==id));
-     basket.push(found);
-  }
+    var cartExist = false;     
+     basket.map(basketItem=>{
+       console.log("here")
+        if (basketItem.id==id) {
+          basketItem.qty +=1;
+          cartExist = true; 
+        }
+      }) 
 
+      if(!cartExist){
+        console.log("does not")
+        let found=  storeShoeStock.find(items => (items.id==id));
+        basket.push({
+        shoeBrand: found.shoeBrand,
+        colour: found.colour,
+        qty: 0,
+        sizeShoe: found.shoesize,
+        price: 1500,
+        'id': id 
+        })
+        }
+ 
+      storeShoeStock.map(findItem=>{
+        console.log("local changes")
+     if(findItem.id==id){
+      findItem.qty =findItem.qty-1;
+          }
+      })
+  
+    return storeShoeStock;
+  }
+  
   function getBasket(){
     return basket;
   }
 
-
-  function addToTrolley() {
-  }
-
-
-
-
+  
  //adding new Stock
   function addNewStock(brand, Color, Qty, shoesize, Price) {
     var alreadyExist = false;
