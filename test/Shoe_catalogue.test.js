@@ -24,7 +24,7 @@ it('should display increased shoe QTY if shoe already exist  ', function() {
 
 
 describe('Filterby selected brandName,BrandColor,BrandSize', function() {
-    it(' filterBy Brand Name ', function() {
+    it('Should filterBy BrandName of a shoe then return it has an Object', function() {
       var shoes = ShoeCatalogue();
       shoes.stockadd("New Balance","Blue","7","4", 1500);
       shoes.filterBy({
@@ -34,7 +34,7 @@ describe('Filterby selected brandName,BrandColor,BrandSize', function() {
       [{shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500, id:1}]);
 });
 
-it('filterBy Color', function() {
+it('Should filterBy Color of Shoes then return has an Object', function() {
     var shoes = ShoeCatalogue();
     shoes.stockadd("New Balance","Blue","7","4", 1500);
     shoes.stockadd("Nike","Blue","5","4", 1500);
@@ -46,7 +46,7 @@ it('filterBy Color', function() {
   );
 });
 
-it('filterBy Size', function() {
+it('should filterBy Size of shoes then return an object has an Object', function() {
     var shoes = ShoeCatalogue();
     shoes.stockadd("New Balance","Blue","7","7", 1500);
     shoes.stockadd("Nike","Blue","5","4", 1500);
@@ -57,7 +57,7 @@ it('filterBy Size', function() {
       {shoeBrand: 'Nike', colour: "White", qty: "4", sizeShoe: "4", price: 1500,id:3}]    
   );
 });
-  it('filterBy BrandName,BrandColor and size', function() {
+  it('should filterBy BrandName,BrandColor and size has an Object', function() {
     var shoes = ShoeCatalogue();
     shoes.stockadd("New Balance","Blue","7","7", 1500);
     shoes.stockadd("Nike","Blue","5","4", 1500);
@@ -72,7 +72,7 @@ it('filterBy Size', function() {
 
 
 describe('Add to Basket', function() {
-    it('shound search shoes using id then return an object', function() {
+    it('should search shoes using id then return an object ', function() {
       var shoes = ShoeCatalogue();
       shoes.stockadd("New Balance","Blue","7","4", 1500);
       shoes.cart(1);
@@ -82,7 +82,7 @@ describe('Add to Basket', function() {
     );
 });
 
-it('shound search shoes using id then return an object', function() {
+it('should search shoes using id then return an object', function() {
     var shoes = ShoeCatalogue();
     shoes.stockadd("New Balance","Blue","7","4", 1500);
     shoes.stockadd("New Balance","White","4","4", 1500);
