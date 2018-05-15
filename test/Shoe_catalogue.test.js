@@ -70,7 +70,6 @@ it('should filterBy Size of shoes then return an object has an Object', function
 });
 });
 
-
 describe('Add to Basket', function() {
     it('should search shoes using id then return an object ', function() {
       var shoes = ShoeCatalogue();
