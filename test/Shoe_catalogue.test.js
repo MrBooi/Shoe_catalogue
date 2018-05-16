@@ -77,18 +77,75 @@ describe('Add to Basket', function() {
       shoes.cart(1);
       assert.deepEqual(shoes.addedCartITems(),
       [
-      {shoeBrand: 'New Balance', colour: "Blue", qty: "7", sizeShoe: "4", price: 1500,id:1}]
+      {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1}]
     );
 });
 
 it('should search shoes using id then return an object', function() {
     var shoes = ShoeCatalogue();
-    shoes.stockadd("New Balance","Blue","7","4", 1500);
-    shoes.stockadd("New Balance","White","4","4", 1500);
-      shoes.cart(2);
+    shoes.stockadd("New Balance","white","7","4", 1500);
+    shoes.stockadd("New Balance","white","4","4", 1500);
+      shoes.cart(1);
+      shoes.cart(1);
+      assert.deepEqual(shoes.addedCartITems(),
+      [
+      {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 1500,id:1}]
+    );  
+});
+
+it('should search shoes using id then return an object', function() {
+  var shoes = ShoeCatalogue();
+  shoes.stockadd("New Balance","Blue","7","4", 1500);
+  shoes.stockadd("New Balance","white","4","4", 1500);
+    shoes.cart(1);
+    shoes.cart(2);
     assert.deepEqual(shoes.addedCartITems(),
-    [{shoeBrand: 'New Balance', colour: "White", qty: '4', sizeShoe: "4", price: 1500,id:2}]
+    [
+    {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1},
+    {shoeBrand: 'New Balance', colour: "white", qty: 1, sizeShoe: "4", price: 1500,id:2}
+  ]
+  );  
+});
+});
+
+
+
+
+describe('Remove Item to Cart', function() {
+  it('should search shoes using id then return an object ', function() {
+    var shoes = ShoeCatalogue();
+    shoes.stockadd("New Balance","Blue","7","4", 1500);
+    shoes.cart(1);
+    assert.deepEqual(shoes.addedCartITems(),
+    [
+    {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1}]
   );
+});
+
+it('should search shoes using id then return an object', function() {
+  var shoes = ShoeCatalogue();
+  shoes.stockadd("New Balance","white","7","4", 1500);
+  shoes.stockadd("New Balance","white","4","4", 1500);
+    shoes.cart(1);
+    shoes.cart(1);
+    assert.deepEqual(shoes.addedCartITems(),
+    [
+    {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 1500,id:1}]
+  );  
+});
+
+it('should search shoes using id then return an object', function() {
+var shoes = ShoeCatalogue();
+shoes.stockadd("New Balance","Blue","7","4", 1500);
+shoes.stockadd("New Balance","white","4","4", 1500);
+  shoes.cart(1);
+  shoes.cart(2);
+  assert.deepEqual(shoes.addedCartITems(),
+  [
+  {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1},
+  {shoeBrand: 'New Balance', colour: "white", qty: 1, sizeShoe: "4", price: 1500,id:2}
+]
+);  
 });
 });
 

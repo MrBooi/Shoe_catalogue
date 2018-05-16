@@ -1,11 +1,11 @@
-function ShoeCatalogue(storedItems) {
+function ShoeCatalogue(storedItems,storedBasket) {
   var shoeBrand = '';
   var shoeColor = '';
   var shoeQty = 0;
   var shoeSize = 0;
   var storeShoeStock = storedItems || [];
   var trolley = []
-  var basket = [];
+  var basket = storedBasket||[];
 
   function stockMap() {
     return storeShoeStock;
@@ -38,8 +38,8 @@ function ShoeCatalogue(storedItems) {
         basket.push({
         shoeBrand: found.shoeBrand,
         colour: found.colour,
-        qty: 0,
-        sizeShoe: found.shoesize,
+        qty: 1,
+        sizeShoe: found.sizeShoe,
         price: 1500,
         'id': id 
         })
@@ -54,12 +54,28 @@ function ShoeCatalogue(storedItems) {
   
     return storeShoeStock;
   }
+
+  function removeCart(id){
+       console.log("remove cart")
+       let found=  basket.find(item => (item.id==id));
+       storeShoeStock.map(updateQty=>{
+        console.log("here")
+         if (updateQty.id==id) {
+          updateQty.qty +=found.qty; 
+         
+          console.log(delete basket[found])
+          delete basket[basket];
+         }
+       }) 
+    
+   return storeShoeStock
+  }
+
   
   function getBasket(){
     return basket;
   }
 
-  
  //adding new Stock
   function addNewStock(brand, Color, Qty, shoesize, Price) {
     var alreadyExist = false;
@@ -86,15 +102,14 @@ function ShoeCatalogue(storedItems) {
     return storeShoeStock;
   }
 
-
-
   return {
     stockadd: addNewStock,
     storeMap: stockMap,
     filterBy: filterShoes,
     getFiltered:getSearchedItems,
     cart: addCart,
-    addedCartITems: getBasket
+    addedCartITems: getBasket,
+    removeItemCart:removeCart
   }
 }
 

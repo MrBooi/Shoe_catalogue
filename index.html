@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoe catalogue</title>
-     <link rel="stylesheet" href="css/simple-grid.css">
-     <link rel="stylesheet" href="css/shoe_catalogue.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
-    <script type="text/x-template" class="ShoeTemplate">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe catalogue</title>
+  <!-- <link rel="stylesheet" href="css/simple-grid.css"> -->
+  <link rel="stylesheet" href="css/shoe_catalogue.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+  <script type="text/x-template" class="ShoeTemplate">
       {{#each shoeList}}
       <tr>
           <td>Brand:</td>
@@ -35,107 +36,107 @@
           <td>R{{price}}</td>
            </tr>
            <br>
- 
-           <button id="{{id}}" onclick="searchByID(this)">Buy</button>
-           <button  id="{{id}}" onclick="removeByID(this)">Cancel</button>
+           <button id="{{id}}" onclick="searchByID(this)">Add To Basket</button>
+           <!-- <button  id="{{id}}" onclick="removeByID(this)">Cancel</button> -->
            <hr>
       {{/each}}
           </script>
-  </head>
-  <body>
-    <header>
-      
-        <div class="row">
-          <div class="col-12">
-            <h1>Shoe catalogue App</h1>
-          </div>
-        </div>
-    </header>
-
-     <div class="nav">
-      <div><a href="">Search</a> </div>
-    <div><a href="">Add new Stock</a> </div>
-    <div><a href="">shopping basket</a></div>
-     </div>
-   
-
- <div class="container">
-   <section class="brand" >
-     <h4>Search Item:</h4> 
-     <div class="row">
-     <div class="col-6">
-    <span>Brand:</span>
-     <select class="shoe">
-<option value="">All shoes</option>
-  <option value="Nike">Nike</option>
-  <option value="Le coq">Le coq</option>
-  <option value="Adidas">Adidas</option>
-</select>
+          <script type="text/x-template" class="ShoeBasketTemplate">
+            {{#each BasketList}}
+            <tr>
+                <td>Brand:</td>
+                <td>{{shoeBrand}}</td>
+              </tr>
+              <br>
+              <tr>
+                 <td>Color:</td>
+                 <td>{{colour}}</td>
+               </tr>
+               <tr>
+                   <br>
+               <td>Size:</td>
+                <td>{{sizeShoe}}</td>
+                 </tr>
+                 <br>
+                 <td>In_Stock:</td>
+                <td>{{qty}}</td>
+                 </tr>
+                 <br>
+                 
+                 <td>Price:</td>
+                <td>R{{price}}</td>
+                 </tr>
+                 <br>
+                 <!-- <button id="{{id}}" onclick="searchByID(this)">Buy</button> -->
+                 <button  id="{{id}}" onclick="removeByID(this)">Cancel</button>
+                 <hr>
+            {{/each}}
+                </script>
+</head>
+<body>
+  <header>
+    <h1>Shoe catalogue App</h1>
+  </header>
+    <div class="ShoppingBasket">
  
-<span>color:</span>
-<select class="shoeColors">
-<option value="" >All</option>
-<option value="">Black</option>
-<option value="">Brown</option>
-<option value="White">white</option>
-<option value="Blue">Blue</option>
-</select>
+    </div> 
+      
+    <div class="searchItems">
+      <span>Brand:</span>
+       <select class="shoe">
+      <option value="">All shoes</option>
+      <option value="Nike">Nike</option>
+      <option value="Le coq">Le coq</option>
+      <option value="Adidas">Adidas</option>
+    </select>
 
-<span>Size:</span>
-<select class="shoeSizes">
-<option value="">All</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-</select>
-<button type="button" name="button" class="searchBtn">Search</button>
+    <span>color:</span>
+    <select class="shoeColors">
+      <option value="">All</option>
+      <option value="">Black</option>
+      <option value="">Brown</option>
+      <option value="White">white</option>
+      <option value="Blue">Blue</option>
+    </select>
 
-</div>
-       
-      <div class="col-6">
-        <div class="displayArea">
+    <span>Size:</span> 
+    <select class="shoeSizes">
+      <option value="">All</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+    </select>
+    <button type="button" name="button" class="searchBtn">Search</button>
+  </div>
    
-      </div>
+  <div class="AddNew">
+    <div class="newstock">
+      <span class="add">Enter Brand:</span>
     </div>
+    <input type="text" name="" value="" placeholder="Enter brand" class="shoeBrand">
+    <div class="newstock">
+      <span class="add">Enter Color:</span>
     </div>
-        <div class="row">
-          <div class="col-12">
-              <h4>Add new stock</h4>
-          </div>
-          <div class="col-6">
-            <div class="newstock">
-            <span class="add">Enter Brand:</span>
-          </div>
-            <input type="text" name="" value="" placeholder="Enter brand" class="shoeBrand">
-            <div class="newstock">
-            <span class="add">Enter Color:</span>
-            </div>
-            <input type="text" name="" value="" placeholder="Enter Color" class="shoeColor">
-          </div>
-          <div class="col-6">
-              <div class="newstock">
-              <span class="add">Enter Size:</span>
-              </div>
-              <input type="text" name="" value="" placeholder="Enter size" class="shoeSize">
-              <div class="newstock">
-              <span class="add">Enter Quantity:</span>
-              </div>
-              <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
-            </div>
-        </div>
-   </section>
-   <div class="row">
-       <div class="col-12">
-         <div class="displayButton">
-          <button type="button" name="button" class="btnStock">Add Stock</button>
-       </div>
-      </div>
-      </div>    
+    <input type="text" name="" value="" placeholder="Enter Color" class="shoeColor">
+    <div class="newstock">
+      <span class="add">Enter Size:</span>
+    </div>
+    <input type="text" name="" value="" placeholder="Enter size" class="shoeSize">
+    <div class="newstock">
+      <span class="add">Enter Quantity:</span>
+    </div>
+    <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
+    <div class="displayButton">
+  <button type="button" name="button" class="btnStock">Add Stock</button>
+    </div>
+  </div>  
+    
+  <div class="displayArea">
 
- </div>
+  </div>
 
-</div>
-<script type="text/javascript" src="./js/shoe_catalogue.js"></script>
-<script type="text/javascript" src="./js/shoe_catalougueDOM.js"></script>
-  </body>
+    
+  <script type="text/javascript" src="./js/shoe_catalogue.js"></script>
+  <script type="text/javascript" src="./js/shoe_catalougueDOM.js"></script>
+</body>
 </html>
