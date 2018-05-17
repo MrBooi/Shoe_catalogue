@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shoe catalogue</title>
-  <!-- <link rel="stylesheet" href="css/simple-grid.css"> -->
   <link rel="stylesheet" href="css/shoe_catalogue.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
   <script type="text/x-template" class="ShoeTemplate">
+    <h2>search Items</h2>
       {{#each shoeList}}
       <tr>
           <td>Brand:</td>
@@ -42,6 +42,7 @@
       {{/each}}
           </script>
           <script type="text/x-template" class="ShoeBasketTemplate">
+            <h2>Shopping Basket</h2>
             {{#each BasketList}}
             <tr>
                 <td>Brand:</td>
@@ -68,20 +69,43 @@
                  </tr>
                  <br>
                  <!-- <button id="{{id}}" onclick="searchByID(this)">Buy</button> -->
-                 <button  id="{{id}}" onclick="removeByID(this)">Cancel</button>
+                 <!-- <button  id="{{id}}" onclick="removeByID(this)">Cancel</button> -->
                  <hr>
             {{/each}}
+            <td>Total:</td>
+            <td>R{{price}}</td>
                 </script>
 </head>
 <body>
   <header>
     <h1>Shoe catalogue App</h1>
   </header>
-    <div class="ShoppingBasket">
- 
-    </div> 
-      
+  <div class="AddNew">
+    <h2>Add New Items</h2>
+    <div class="update">
+      <span class="closebtnUpdate" onclick="this.parentElement.style.display='none';">&times;</span> 
+         Stock is successfully updated
+    </div>
+    <div class="successful">
+        <span class="closebtnsuccessful" onclick="this.parentElement.style.display='none';">&times;</span> 
+           Stock is successfully added
+      </div>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        Please fill in all textFields!
+      </div>
+      <input type="text" name="" value="" placeholder="Enter brand" class="shoeBrand">
+      <input type="text" name="" value="" placeholder="Enter Color" class="shoeColor">
+      <input type="text" name="" value="" placeholder="Enter size" class="shoeSize">
+      <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
+      <input type="text" name="" value="" placeholder="Enter Price" class="shoePrice">
+      <div class="displayButton">
+    <button type="button" name="button" class="btnStock">Add Stock</button>
+      </div>
+    </div>   
+     <div class="row">
     <div class="searchItems">
+      <h2>Choose a Product</h2>
       <span>Brand:</span>
        <select class="shoe">
       <option value="">All shoes</option>
@@ -93,8 +117,8 @@
     <span>color:</span>
     <select class="shoeColors">
       <option value="">All</option>
-      <option value="">Black</option>
-      <option value="">Brown</option>
+      <option value="Black">Black</option>
+      <option value="Brown">Brown</option>
       <option value="White">white</option>
       <option value="Blue">Blue</option>
     </select>
@@ -108,33 +132,22 @@
     </select>
     <button type="button" name="button" class="searchBtn">Search</button>
   </div>
-   
-  <div class="AddNew">
-    <div class="newstock">
-      <span class="add">Enter Brand:</span>
-    </div>
-    <input type="text" name="" value="" placeholder="Enter brand" class="shoeBrand">
-    <div class="newstock">
-      <span class="add">Enter Color:</span>
-    </div>
-    <input type="text" name="" value="" placeholder="Enter Color" class="shoeColor">
-    <div class="newstock">
-      <span class="add">Enter Size:</span>
-    </div>
-    <input type="text" name="" value="" placeholder="Enter size" class="shoeSize">
-    <div class="newstock">
-      <span class="add">Enter Quantity:</span>
-    </div>
-    <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
-    <div class="displayButton">
-  <button type="button" name="button" class="btnStock">Add Stock</button>
-    </div>
-  </div>  
-    
+  
   <div class="displayArea">
 
+    </div> 
   </div>
+ 
 
+    <div class="ShoppingBasket">
+         <h2>ShoppingBasket</h2>
+ 
+      </div>  
+
+      <div class="remove">
+          <button type="button" name="button" class="CartRemove">Remove Cart<button>
+      </div>
+      
     
   <script type="text/javascript" src="./js/shoe_catalogue.js"></script>
   <script type="text/javascript" src="./js/shoe_catalougueDOM.js"></script>

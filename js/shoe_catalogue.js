@@ -6,6 +6,46 @@ function ShoeCatalogue(storedItems,storedBasket) {
   var storeShoeStock = storedItems || [];
   var trolley = []
   var basket = storedBasket||[];
+  var deleteCart =[];
+
+var store=[
+      {shoeBrand: "Le coq", colour: "Blue", qty: 2, sizeShoe: "6", price: 2400, id: "1"},
+      {shoeBrand: "Le coq", colour: "Blue", qty: 2, sizeShoe: "7", price: 2400, id: "1"}
+
+
+
+
+
+
+
+
+
+    ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   function stockMap() {
     return storeShoeStock;
@@ -28,6 +68,7 @@ function ShoeCatalogue(storedItems,storedBasket) {
        console.log("here")
         if (basketItem.id==id) {
           basketItem.qty +=1;
+          basketItem.price = basketItem.price*basketItem.qty;
           cartExist = true; 
         }
       }) 
@@ -40,7 +81,7 @@ function ShoeCatalogue(storedItems,storedBasket) {
         colour: found.colour,
         qty: 1,
         sizeShoe: found.sizeShoe,
-        price: 1500,
+        price: found.price,
         'id': id 
         })
         }
@@ -57,16 +98,32 @@ function ShoeCatalogue(storedItems,storedBasket) {
 
   function removeCart(id){
        console.log("remove cart")
+      var removeItem = false;
        let found=  basket.find(item => (item.id==id));
        storeShoeStock.map(updateQty=>{
         console.log("here")
          if (updateQty.id==id) {
-          updateQty.qty +=found.qty; 
-         
-          console.log(delete basket[found])
-          delete basket[basket];
+          updateQty.qty +=found.qty;
+          found.qty =0;
+          removeItem = true; 
+          console.log(found.qty)
          }
        }) 
+
+        if(!removeItem){
+          let found=  storeShoeStock.find(items => (items.id==id));
+          basket.push({
+          shoeBrand: found.shoeBrand,
+          colour: found.colour,
+          qty: 0,
+          sizeShoe: found.sizeShoe,
+          price: found.price,
+          'id': id 
+          })
+        }
+
+        deleteCart = basket
+        console.log(deleteCart)
     
    return storeShoeStock
   }
@@ -85,9 +142,11 @@ function ShoeCatalogue(storedItems,storedBasket) {
         let getQty = parseFloat(current.qty)
         let QtyNumber = parseFloat(Qty)
         current.qty = getQty + QtyNumber;
-        alreadyExist = true;
-      }
+        alreadyExist = true; 
+        updateElem.style.display='block';
+      } 
     });
+    if(brand !==""  && Color !== "" && shoesize !== "" && Price!==""){
     if (!alreadyExist) {
       let id = storeShoeStock.length+1;
       storeShoeStock.push({
@@ -95,10 +154,17 @@ function ShoeCatalogue(storedItems,storedBasket) {
         'colour': Color,
         'qty': Qty,
         'sizeShoe': shoesize,
-        'price': 1500,
+        'price': Price,
         'id': id
       })
+      successfulElem.style.display='block';
     }
+  } else{
+     console.log("incorrect data")
+     incorrectElem.style.display="block";
+  }
+
+
     return storeShoeStock;
   }
 
