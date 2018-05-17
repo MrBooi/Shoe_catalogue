@@ -10,7 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
   <script type="text/x-template" class="ShoeTemplate">
-    <h2>search Items</h2>
+    <h2>Search Items</h2>
       {{#each shoeList}}
       <tr>
           <td>Brand:</td>
@@ -68,12 +68,10 @@
                 <td>R{{price}}</td>
                  </tr>
                  <br>
-                 <!-- <button id="{{id}}" onclick="searchByID(this)">Buy</button> -->
-                 <!-- <button  id="{{id}}" onclick="removeByID(this)">Cancel</button> -->
                  <hr>
             {{/each}}
             <td>Total:</td>
-            <td>R{{price}}</td>
+            <td>R{{Totals}}</td>
                 </script>
 </head>
 <body>
@@ -82,21 +80,26 @@
   </header>
   <div class="AddNew">
     <h2>Add New Items</h2>
-    <div class="update">
-      <span class="closebtnUpdate" onclick="this.parentElement.style.display='none';">&times;</span> 
-         Stock is successfully updated
-    </div>
-    <div class="successful">
-        <span class="closebtnsuccessful" onclick="this.parentElement.style.display='none';">&times;</span> 
-           Stock is successfully added
-      </div>
-    <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-        Please fill in all textFields!
-      </div>
-      <input type="text" name="" value="" placeholder="Enter brand" class="shoeBrand">
-      <input type="text" name="" value="" placeholder="Enter Color" class="shoeColor">
-      <input type="text" name="" value="" placeholder="Enter size" class="shoeSize">
+       <select class="shoeBrand">
+      <option value="">Shoe Brand</option>
+      <option value="Nike">Nike</option>
+      <option value="Le coq">Le coq</option>
+      <option value="Adidas">Adidas</option>
+    </select>
+    <select class="shoeColor">
+      <option value="">Brand Color</option>
+      <option value="Black">Black</option>
+      <option value="Brown">Brown</option>
+      <option value="White">white</option>
+      <option value="Blue">Blue</option>
+    </select>
+    <select class="shoeSize">
+        <option value="">Shoe Size</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+    
       <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
       <input type="text" name="" value="" placeholder="Enter Price" class="shoePrice">
       <div class="displayButton">
@@ -105,7 +108,7 @@
     </div>   
      <div class="row">
     <div class="searchItems">
-      <h2>Choose a Product</h2>
+      <h2>Choose a Brand</h2>
       <span>Brand:</span>
        <select class="shoe">
       <option value="">All shoes</option>

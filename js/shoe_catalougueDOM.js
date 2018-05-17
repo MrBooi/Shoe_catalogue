@@ -9,9 +9,7 @@ var colorSelect = document.querySelector('.shoeColors');
 var ShoeSizeSelect = document.querySelector('.shoeSizes');
 var searchShoesBtn = document.querySelector('.searchBtn');
 var storeToBasket  = document.querySelector('.btnCart');
-var incorrectElem = document.querySelector('.alert');
-var updateElem  = document.querySelector('.update');
-var successfulElem = document.querySelector('.successful');
+var removeItemElem = document.querySelector('.CartRemove');
 // Template setup
 var templateSource = document.querySelector(".ShoeTemplate").innerHTML;
 var shoeTemplate = Handlebars.compile(templateSource);
@@ -34,20 +32,26 @@ function addStock() {
     BrandPrice.value
   );
   localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.storeMap()));
- 
+ window.location.reload();
 }
 
 function searchByID(idValue){  
   localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.cart(idValue.id)));
+   shoe_Catalogue.calcTotal();
   displayShoesBasketElem.innerHTML = BasketshoeTemplate({
-    BasketList:shoe_Catalogue.addedCartITems()
+    BasketList:shoe_Catalogue.addedCartITems(),
+    Totals :shoe_Catalogue.cartBill()
   });
   localStorage.setItem('BasketItems', JSON.stringify(shoe_Catalogue.addedCartITems()));
-  window.location.reload();
+ 
+   //window.location.reload();
 }
 
-function removeByID(idElem){
-  localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.removeItemCart(idElem.id)));
+function clearCart(){
+   shoe_Catalogue.removeItemCart();
+  localStorage.setItem('shoppingBasket', JSON.stringify(shoe_Catalogue.storeMap()));
+  localStorage.removeItem('BasketItems');
+    // window.location.reload();
 
   displayShoesBasketElem.innerHTML = BasketshoeTemplate({
     BasketList:shoe_Catalogue.addedCartITems()
@@ -83,11 +87,11 @@ window.addEventListener('load',function(){
   });
 
   displayShoesBasketElem.innerHTML = BasketshoeTemplate({
-    BasketList:shoe_Catalogue.addedCartITems()
+    BasketList:shoe_Catalogue.addedCartITems(),
   });
 });
 
-
+removeItemElem.addEventListener('click',clearCart);
 
 
 
