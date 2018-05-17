@@ -143,7 +143,7 @@ var store=[
         let QtyNumber = parseFloat(Qty)
         current.qty = getQty + QtyNumber;
         alreadyExist = true; 
-        updateElem.style.display='block';
+        // updateElem.style.display='block';
       } 
     });
     if(brand !==""  && Color !== "" && shoesize !== "" && Price!==""){
@@ -157,11 +157,11 @@ var store=[
         'price': Price,
         'id': id
       })
-      successfulElem.style.display='block';
+      // successfulElem.style.display='block';
     }
   } else{
      console.log("incorrect data")
-     incorrectElem.style.display="block";
+    //  incorrectElem.style.display="block";
   }
 
 

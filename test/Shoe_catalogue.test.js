@@ -87,9 +87,10 @@ it('should search shoes using id then return an object', function() {
     shoes.stockadd("New Balance","white","4","4", 1500);
       shoes.cart(1);
       shoes.cart(1);
+      console.log(shoes.addedCartITems())
       assert.deepEqual(shoes.addedCartITems(),
       [
-      {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 1500,id:1}]
+      {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 3000,id:1}]
     );  
 });
 
@@ -130,7 +131,7 @@ it('should search shoes using id then return an object', function() {
     shoes.cart(1);
     assert.deepEqual(shoes.addedCartITems(),
     [
-    {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 1500,id:1}]
+    {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 3000,id:1}]
   );  
 });
 
