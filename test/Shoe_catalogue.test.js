@@ -126,40 +126,28 @@ it('should search shoes using id then return an object', function() {
 
 
 describe('Remove Item to Cart', function() {
-  it('should search shoes using id then return an object ', function() {
+  it('should 0.00 Cart total if cart is deleted', function() {
     var shoes = ShoeCatalogue();
-    shoes.stockadd("New Balance","Blue","7","4", 1500);
     shoes.cart(1);
     assert.deepEqual(shoes.addedCartITems(),
-    [
-    {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1}]
-  );
+    [{shoeBrand: 'Le coq', colour: "Blue", qty: 1, sizeShoe: "6", price: 2400,id:1}]);
+    shoes.removeItemCart()
+    assert.equal(shoes.cartBill(),0.00);
 });
 
-it('should search shoes using id then return an object', function() {
+
+it('should 4800.00 cart total if cart is not removed', function() {
   var shoes = ShoeCatalogue();
-
-    shoes.cart(1);
-    shoes.cart(1);
-    assert.deepEqual(shoes.addedCartITems(),
-    [
-    {shoeBrand: 'New Balance', colour: "white", qty: 2, sizeShoe: "4", price: 3000,id:1}]
-  );  
-});
-
-it('should search shoes using id then return an object', function() {
-var shoes = ShoeCatalogue();
-shoes.stockadd("New Balance","Blue","7","4", 1500);
-shoes.stockadd("New Balance","white","4","4", 1500);
   shoes.cart(1);
   shoes.cart(2);
   assert.deepEqual(shoes.addedCartITems(),
-  [
-  {shoeBrand: 'New Balance', colour: "Blue", qty: 1, sizeShoe: "4", price: 1500,id:1},
-  {shoeBrand: 'New Balance', colour: "white", qty: 1, sizeShoe: "4", price: 1500,id:2}
-]
-);  
+  [{shoeBrand: 'Le coq', colour: "Blue", qty: 1, sizeShoe: "6", price: 2400,id:1},
+  {shoeBrand: 'Le coq', colour: "Blue", qty: 1, sizeShoe: "7", price: 2400,id:2}]);
+  console.log(shoes.calcTotal());
+  assert.equal(shoes.cartBill(),4800.00);
 });
+
+
 });
 
 

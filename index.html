@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shoe catalogue</title>
+  <link rel="stylesheet" href="css/simple-grid.css">
   <link rel="stylesheet" href="css/shoe_catalogue.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
@@ -74,42 +75,58 @@
             <td>R{{Totals}}</td>
                 </script>
 </head>
-<body>
-  <header>
-    <h1>Shoe catalogue App</h1>
-  </header>
-  <div class="AddNew">
-    <h2>Add New Items</h2>
-       <select class="shoeBrand">
-      <option value="">Shoe Brand</option>
-      <option value="Nike">Nike</option>
-      <option value="Le coq">Le coq</option>
-      <option value="Adidas">Adidas</option>
-    </select>
-    <select class="shoeColor">
-      <option value="">Brand Color</option>
-      <option value="Black">Black</option>
-      <option value="Brown">Brown</option>
-      <option value="White">white</option>
-      <option value="Blue">Blue</option>
-    </select>
-    <select class="shoeSize">
-        <option value="">Shoe Size</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
+<body> 
+  <div class="row">
+      <header>
+          <h1>Shoe catalogue App</h1>
+        </header>
+  </div>
+  <div class="row">
+      <div class="AddNew">
+          <h2>Add New Items</h2>
+          <div class="messages">
+              <div class="alert">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    Please fill all textFields.
+                </div>
+                <div class="successful">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    Stock is successful added into a shopping store
+                  </div>
+          </div>
+         
+             <select class="shoeBrand">
+            <option value="">Shoe Brand</option>
+            <option value="Nike">Nike</option>
+            <option value="Le coq">Le coq</option>
+            <option value="Adidas">Adidas</option>
+          </select>
+          <select class="shoeColor">
+            <option value="">Brand Color</option>
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+            <option value="White">white</option>
+            <option value="Blue">Blue</option>
+          </select>
+          <select class="shoeSize">
+              <option value="">Shoe Size</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          
+            <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
+            <input type="text" name="" value="" placeholder="Enter Price" class="shoePrice">
+            <div class="displayButton">
+          <button type="button" name="button" class="btnStock">Add Stock</button>
+            </div>
+          </div>
     
-      <input type="text" name="" value="" placeholder="Enter Qty" class="shoeQty">
-      <input type="text" name="" value="" placeholder="Enter Price" class="shoePrice">
-      <div class="displayButton">
-    <button type="button" name="button" class="btnStock">Add Stock</button>
-      </div>
-    </div>   
+  </div>
+     
      <div class="row">
     <div class="searchItems">
       <h2>Choose a Brand</h2>
-      <span>Brand:</span>
        <select class="shoe">
       <option value="">All shoes</option>
       <option value="Nike">Nike</option>
@@ -117,7 +134,6 @@
       <option value="Adidas">Adidas</option>
     </select>
 
-    <span>color:</span>
     <select class="shoeColors">
       <option value="">All</option>
       <option value="Black">Black</option>
@@ -126,7 +142,6 @@
       <option value="Blue">Blue</option>
     </select>
 
-    <span>Size:</span> 
     <select class="shoeSizes">
       <option value="">All</option>
       <option value="6">6</option>
@@ -134,22 +149,21 @@
       <option value="8">8</option>
     </select>
     <button type="button" name="button" class="searchBtn">Search</button>
+  </div> 
+  
+  <div class="areDisplay">
+    <!-- <h4>Filtered Results</h4> -->
+      <div class="displayArea">
+          asdgffhghchcxh
+             </div> 
   </div>
   
-  <div class="displayArea">
-
-    </div> 
-  </div>
  
-
     <div class="ShoppingBasket">
-         <h2>ShoppingBasket</h2>
- 
-      </div>  
-
-      <div class="remove">
-          <button type="button" name="button" class="CartRemove">Remove Cart<button>
-      </div>
+          
+  </div>
+  <button type="button" name="button" class="CartRemove">Remove Cart</button>
+  </div>
       
     
   <script type="text/javascript" src="./js/shoe_catalogue.js"></script>

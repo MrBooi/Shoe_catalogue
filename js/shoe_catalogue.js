@@ -20,14 +20,6 @@ function ShoeCatalogue(storedItems, storedBasket) {
     }
   }
 
-  if (storedBasket && basket.length > 0) {
-    basket = [];
-    for (let i = 0; i < storedBasket.length; i++) {
-      basket.push(storedBasket[i]);
-    }
-  }
-
-
 
   function stockMap() {
     return storeShoeStock;
@@ -45,8 +37,11 @@ function ShoeCatalogue(storedItems, storedBasket) {
 
 
   function addCart(id) {
+    let found = storeShoeStock.find(items => (items.id == id));
     var cartExist = false;
-    basket.map(basketItem => {
+    if(found.qty>0){
+   
+      basket.map(basketItem => {
       console.log("here")
       if (basketItem.id == id) {
         basketItem.qty += 1;
@@ -57,7 +52,6 @@ function ShoeCatalogue(storedItems, storedBasket) {
 
     if (!cartExist) {
       console.log("does not")
-      let found = storeShoeStock.find(items => (items.id == id));
       basket.push({
         shoeBrand: found.shoeBrand,
         colour: found.colour,
@@ -67,19 +61,21 @@ function ShoeCatalogue(storedItems, storedBasket) {
         'id': id
       })
     }
+    found.qty -= 1;
+    // storeShoeStock.map(findItem => {
+    //   console.log("local changes")
+    //   if (findItem.id == id) {
+    //     findItem.qty = findItem.qty - 1;
+    //   }
+    // })
+       return true;
+  }
 
-    storeShoeStock.map(findItem => {
-      console.log("local changes")
-      if (findItem.id == id) {
-        findItem.qty = findItem.qty - 1;
-      }
-    })
-
-    return storeShoeStock;
+    return false;
   }
 
   function removeCart() {
-    console.log("remove cart")
+   
     for (let i = 0; i < storeShoeStock.length; i++) {
       let cartRemove = storeShoeStock[i];
       let trolleyFound = basket.find(shoe => (shoe.id == cartRemove.id));
@@ -103,7 +99,7 @@ function ShoeCatalogue(storedItems, storedBasket) {
 
 
   function getTotal() {
-    // console.log(basketTotal);
+  
     return basketTotal.toFixed(2);
   }
 
